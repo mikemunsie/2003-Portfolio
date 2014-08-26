@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>GATEWAY:::</title>
+</head>
+<body bgcolor="black" text="#aaaaaa">
+<bgsound src="loops/0.wav" loop="-1">
+<style>
+a {
+text-decoration:none;
+color:#aa0000;
+}
+a:hover {
+color:#dd0000;
+}
+</style>
+
+<img name="ball" src="images/ball.gif" style="position:absolute;top:0;left:0;visibility:hidden;filter:alpha(opacity=50);">
+<img src="images/mcm2004.gif" style="position:relative;" name="monogram"></div>
+<div id="data1" style="position:relative;left:-500">
+<table>
+<tr>
+<td nowrap>
+<font size="2" face="verdana"><font color="#dddddd">:: Munsie Portfolio - Welcome ::</font>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="javascript:screentest()">[Test Resolution]</a>  <a href="javascript:testjava()">[Test JavaScript]</a></font>
+<br>
+<br>
+<div id="st1"><font size="2" face="verdana">:> Initializing Screen Test....</font></div>
+</td>
+</tr>
+</table>
+</div>
+<script language="JavaScript">
+var x = 0
+var y = 0
+var ball_hdir = 5
+var ball_vdir = 5
+var ball_width = 25
+var ball_height = 25
+var timer1 = null
+var timer2 = null
+var timer3 = null
+var temp = false
+var temp1 = false
+var counter = 0 
+var monx = 0
+
+var data = -500
+
+setTimeout("movedata()", 3000)
+setTimeout("movemon()", 3000)
+screentest()
+
+function movedata()
+{
+timer3=setInterval("movedatatable()", 10)
+}
+
+function movemon()
+{
+timer2=setInterval("movemono()", 10)
+}
+
+function movedatatable()
+{
+data+=10
+if (data == 0)
+{
+clearInterval(timer3)
+}
+document.all.data1.style.left = data
+}
+
+function movemono()
+{
+monx-=10
+if (monx <= 0-(document.monogram.height+20))
+{
+counter++
+if (counter == 1)
+{
+
+document.monogram.style.filter = "invert()"
+counter=-1
+}
+if (counter == 0)
+{
+document.monogram.style.filter = ""
+}
+clearInterval(timer2)
+timer2=setInterval("movemono2()", 10)
+}
+document.monogram.style.top=monx
+}
+
+function movemono2()
+{
+monx+=10
+if (monx >= 0)
+{
+clearInterval(timer2)
+setTimeout("movemon()", 3000)
+}
+document.monogram.style.top=monx
+}
+
+function screentest()
+{
+if (screen.height >= 600 && screen.width >= 800)
+{
+if (temp == true)
+{
+alert("Resolution OK")
+}
+else
+{
+document.all.st1.innerHTML += '<br><font face="verdana" size="2">:> Resolution Check OK.  You can now enter the porfolio.</font><br><br><input type="button" value="Enter Portfolio" style="font-family:verdana;font-size:11px;background:#222222;color:#ffffff" onClick="enter()">  <input type="button" value="Leave Portfolio" style="font-family:verdana;font-size:11px;background:#222222;color:#ffffff" onClick="leave()">'
+temp=true
+}
+}
+else
+{
+if (temp1 == true)
+{
+alert("SCREEN RESOLUTION TOO LOW")
+}
+else
+{
+document.all.st1.innerHTML += '<br><font face="verdana" size="2">:> It is recommended that you have a 1024x768 Screen Resolution or higher before continuing</font>'
+temp1=true
+}
+}
+}
+
+function testjava()
+{
+if (timer1)
+{
+x=0
+y=0
+clearTimeout(timer1)
+timer1=null
+document.ball.style.visibility="hidden"
+}
+else
+{
+document.ball.style.visibility="visible"
+timer1 = setInterval("pong()", 10)
+}
+}
+
+function pong()
+{
+if (x+ball_hdir >= document.body.clientWidth)
+{
+x=0
+}
+if (y+ball_vdir >= document.body.clientHeight)
+{
+y=0
+}
+if (x+ball_hdir >= document.body.clientWidth-ball_width || x+ball_hdir <= 0)
+{
+ball_hdir=-ball_hdir
+}
+if (y+ball_vdir >= document.body.clientHeight-ball_height || y+ball_vdir <= 0)
+{
+ball_vdir=-ball_vdir
+}
+x+=ball_hdir
+y+=ball_vdir
+document.ball.style.left = x
+document.ball.style.top = y
+}
+
+function enter()
+{
+self.location="pages/index.htm"
+}
+
+function leave()
+{
+window.close()
+}
+</script>
+</span>
+
+</body>
+</html>
