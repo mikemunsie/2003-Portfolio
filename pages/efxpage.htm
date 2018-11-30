@@ -1,305 +1,255 @@
 <html>
+
 <head>
-<title>MBW Engine</title>
+  <title>MBW Engine</title>
 </head>
+
 <body bgcolor="#112233" text="white" link="#aabbcc" vlink="#aabbcc" alink="#aabbcc">
-<bgsound src="../loops/7.mp3">
-<style>
-a {
-text-decoration:none;
-}
-body {
-overflow-x:hidden;
-overflow-y:hidden;
-font-family:verdana;
-}
-</style>
-<table width="100%" height="100%">
-<tr>
-<td><center><span id="fxtitle" style="position:relative;width:100%;filter:alpha(opacity=0);"><font style="font-size:100px">EFX PAGE</font></span></center></td>
-</tr>
-</table>
-<div id="ball" style="visibility:hidden;position:absolute;top:0;left:0;width:50;height:50;background:#aabbcc"></div>
+    <style>
+      a {
+        text-decoration: none;
+      }
 
-<script language="JavaScript">
-var startopac = 0
-var inc=2
-var newopac=0
-var mod = null
-function increaseopac()
-{
-newopac=newopac+inc
-if (newopac>100)
-{
-setTimeout("r1()", 1000)
-}
-else
-{
-document.all.fxtitle.filters[0].opacity=newopac
-setTimeout("increaseopac()", 10)
-}
-}
-setTimeout("increaseopac()", 2500)
-function r1()
-{
-setTimeout("r2()", 2000)
-}
-function r2()
-{
-r3()
-}
-var counter = 0
-var realcounter = 0
-function r3()
-{
-realcounter++
-if (realcounter > 100)
-{
-r4()
-}
-else
-{
-counter++
-if (counter == 1)
-{
-document.bgColor = "black"
-counter=-1
-}
-if (counter == 0)
-{
-document.bgColor = "#112233"
-}
-setTimeout("r3()", 10)
-}
-}
-function r4()
-{
-document.all.ball.style.visibility = "visible"
-r5()
-}
-var randx = 0
-var randy = 0
-var nextcounter = 0
-function r5()
-{
-nextcounter++
-if (nextcounter > 200)
-{
-r6()
-}
-else
-{
-randx = Math.floor(Math.random() * (document.body.clientWidth-50))
-randy = Math.floor(Math.random() * (document.body.clientHeight-50))
-document.all.ball.style.left = randx
-document.all.ball.style.top = randy
-setTimeout("r5()", 10)
-}
-}
+      body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        font-family: verdana;
+      }
+    </style>
+    <table width="100%" height="100%">
+      <tr>
+        <td>
+          <center><span id="fxtitle" style="position:relative;width:100%;filter:alpha(opacity=0);">
+              <font style="font-size:100px">EFX PAGE</font>
+            </span></center>
+        </td>
+      </tr>
+    </table>
+    <div id="ball" style="visibility:hidden;position:absolute;top:0;left:0;width:50;height:50;background:#aabbcc"></div>
 
-function r6()
-{
-r7()
-}
+    <script language="JavaScript">
+      var startopac = 0
+      var inc = .1
+      var newopac = 0
+      var mod = null
 
-var ah = 50
-var av = 50
-function r7()
-{
-if (ah > 200)
-{
-r8()
-}
-else
-{
-document.all.ball.style.width = ah++
-document.all.ball.style.height = av++
-setTimeout("r7()", 10)
-}
-}
-function r8()
-{
-if (ah == 50)
-{
-r9()
-}
-else
-{
-document.all.ball.style.width = ah--
-document.all.ball.style.height = av--
-setTimeout("r8()", 10)
-}
-}
-function r9()
-{
-if (randx <= 0 && randy <= 0)
-{
-r10()
-}
-else
-{
-if (randx != 0)
-{
-document.all.ball.style.left = randx--
-}
-if (randy != 0)
-{
-document.all.ball.style.top = randy--
-}
-setTimeout("r9()", 10)
-}
-}
-function r10()
-{
-if (randx >= (document.body.clientWidth-50) && randy >= (document.body.clientHeight-50))
-{
-r11()
-}
-else
-{
-if (randx != (document.body.clientWidth-50))
-{
-document.all.ball.style.left = randx++
-}
-if (randy != (document.body.clientHeight-50))
-{
-document.all.ball.style.top = randy++
-}
-setTimeout("r10()", 10)
-}
-}
+      function increaseopac() {
+        newopac = newopac + inc
+        if (newopac > 1) {
+          setTimeout(r1, 1000)
+        } else {
+          document.all.fxtitle.opacity = newopac
+          setTimeout(increaseopac, 10)
+        }
+      }
+      setTimeout(increaseopac, 2500)
 
-function r11()
-{
-document.all.ball.style.visibility = "hidden"
-setTimeout("r12()", 100)
-}
-var fx = 0
-var fy = 0
-function r12()
-{
-if (fx-- == -600)
-{
-r13()
-}
-else
-{
-document.all.fxtitle.style.left = fx--
-setTimeout("r12()", 10)
-}
-}
+      function r1() {
+        setTimeout(r2, 2000)
+      }
 
-function r13()
-{
-if (fx++ >= 0)
-{
-r14()
-}
-else
-{
-document.all.fxtitle.style.left = fx++
-setTimeout("r13()", 10)
-}
-}
+      function r2() {
+        r3()
+      }
+      var counter = 0
+      var realcounter = 0
 
-function r14()
-{
-document.bgColor = "rgb(250,250,250)"
-r15()
-}
+      function r3() {
+        realcounter++
+        if (realcounter > 100) {
+          r4()
+        } else {
+          counter++
+          if (counter == 1) {
+            document.bgColor = "black"
+            counter = -1
+          }
+          if (counter == 0) {
+            document.bgColor = "#112233"
+          }
+          setTimeout(r3, 10)
+        }
+      }
 
-var counter4 = 250
+      function r4() {
+        document.all.ball.style.visibility = "visible"
+        r5()
+      }
+      var randx = 0
+      var randy = 0
+      var nextcounter = 0
 
-function r15()
-{
-counter4--
-if (counter4 == 0)
-{
-r16()
-}
-else
-{
-document.bgColor = "rgb(" + counter4 + "," + counter4 + "," + counter4 + ")"
-setTimeout("r15()", 10)
-}
-} 
+      function r5() {
+        nextcounter++
+        if (nextcounter > 200) {
+          r6()
+        } else {
+          randx = Math.floor(Math.random() * (document.body.clientWidth - 50))
+          randy = Math.floor(Math.random() * (document.body.clientHeight - 50))
+          document.all.ball.style.left = randx
+          document.all.ball.style.top = randy
+          setTimeout(r5, 10)
+        }
+      }
 
-var counter9 = 0
-var counter10 = 0
-function r16()
-{
-counter10++
-counter9++
-if (counter10 < 100)
-{
-if (counter9 == 1)
-{
-document.all.fxtitle.style.top = -10
-counter9=-1
-}
-if (counter9 == 0)
-{
-document.all.fxtitle.style.top = 10
-}
-setTimeout("r16()", 10)
-}
-else
-{
-r17()
-}
-}
+      function r6() {
+        r7()
+      }
 
-function r17()
-{
-counter4++
-if (counter4 == 250)
-{
-document.bgColor = "#112233"
-r18()
-}
-else
-{
-document.bgColor = "rgb(" + counter4 + "," + counter4 + "," + counter4 + ")"
-setTimeout("r16()", 10)
-}
-}
+      var ah = 50
+      var av = 50
 
-var counter11 = 0
-var counter12 = 0
-function r18()
-{
-counter11++
-counter12++
-if (counter11 < 100)
-{
-if (counter12 == 1)
-{
-document.all.fxtitle.style.left = -10
-counter12=-1
-}
-if (counter12 == 0)
-{
-document.all.fxtitle.style.left = 10
-}
-setTimeout("r18()", 10)
-}
-else
-{
-r19()
-}
-}
+      function r7() {
+        if (ah > 200) {
+          r8()
+        } else {
+          document.all.ball.style.width = ah++
+          document.all.ball.style.height = av++
+          setTimeout(r7, 10)
+        }
+      }
 
-function r19()
-{
-document.all.fxtitle.innerHTML = '<font style="font-size:100px">EFX DONE</font>'
-setTimeout("r20()", 1000)
-}
+      function r8() {
+        if (ah == 50) {
+          r9()
+        } else {
+          document.all.ball.style.width = ah--
+          document.all.ball.style.height = av--
+          setTimeout(r8, 10)
+        }
+      }
 
-function r20()
-{
-window.status = "Leaving EFX PAGE..."
-setTimeout("history.go(-1)", 2000)
-}
-</script>
+      function r9() {
+        if (randx <= 0 && randy <= 0) {
+          r10()
+        } else {
+          if (randx != 0) {
+            document.all.ball.style.left = randx--
+          }
+          if (randy != 0) {
+            document.all.ball.style.top = randy--
+          }
+          setTimeout(r9, 10)
+        }
+      }
+
+      function r10() {
+        if (randx >= (document.body.clientWidth - 50) && randy >= (document.body.clientHeight - 50)) {
+          r11()
+        } else {
+          if (randx != (document.body.clientWidth - 50)) {
+            document.all.ball.style.left = randx++
+          }
+          if (randy != (document.body.clientHeight - 50)) {
+            document.all.ball.style.top = randy++
+          }
+          setTimeout(r10, 10)
+        }
+      }
+
+      function r11() {
+        document.all.ball.style.visibility = "hidden"
+        setTimeout(r12, 100)
+      }
+      var fx = 0
+      var fy = 0
+
+      function r12() {
+        if (fx-- == -600) {
+          r13()
+        } else {
+          document.all.fxtitle.style.left = fx--
+          setTimeout(r12, 10)
+        }
+      }
+
+      function r13() {
+        if (fx++ >= 0) {
+          r14()
+        } else {
+          document.all.fxtitle.style.left = fx++
+          setTimeout(r13, 10)
+        }
+      }
+
+      function r14() {
+        document.bgColor = "rgb(250,250,250)"
+        r15()
+      }
+
+      var counter4 = 250
+
+      function r15() {
+        counter4--
+        if (counter4 == 0) {
+          r16()
+        } else {
+          document.bgColor = "rgb(" + counter4 + "," + counter4 + "," + counter4 + ")"
+          setTimeout(r15, 10)
+        }
+      }
+
+      var counter9 = 0
+      var counter10 = 0
+
+      function r16() {
+        counter10++
+        counter9++
+        if (counter10 < 100) {
+          if (counter9 == 1) {
+            document.all.fxtitle.style.top = -10
+            counter9 = -1
+          }
+          if (counter9 == 0) {
+            document.all.fxtitle.style.top = 10
+          }
+          setTimeout(r16, 10)
+        } else {
+          r17()
+        }
+      }
+
+      function r17() {
+        counter4++
+        if (counter4 == 250) {
+          document.bgColor = "#112233"
+          r18()
+        } else {
+          document.bgColor = "rgb(" + counter4 + "," + counter4 + "," + counter4 + ")"
+          setTimeout(r16, 10)
+        }
+      }
+
+      var counter11 = 0
+      var counter12 = 0
+
+      function r18() {
+        counter11++
+        counter12++
+        if (counter11 < 100) {
+          if (counter12 == 1) {
+            document.all.fxtitle.style.left = -10
+            counter12 = -1
+          }
+          if (counter12 == 0) {
+            document.all.fxtitle.style.left = 10
+          }
+          setTimeout(r18, 10)
+        } else {
+          r19()
+        }
+      }
+
+      function r19() {
+        document.all.fxtitle.innerHTML = '<font style="font-size:100px">EFX DONE</font>'
+        setTimeout(r20, 1000)
+      }
+
+      function r20() {
+        window.status = "Leaving EFX PAGE..."
+        setTimeout(() => history.go(-1), 2000)
+      }
+    </script>
 </body>
+
 </html>
