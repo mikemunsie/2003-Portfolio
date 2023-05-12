@@ -7,5 +7,7 @@ Enjoy :)
 
 **Installation:**
 ```
-Just open the index.html. Party like it's 2003.
+npm install
+npm run start
+// open welcome.html
 ```
