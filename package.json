@@ -1,0 +1,22 @@
+{
+  "name": "2003-high-school-portfolio",
+  "version": "1.0.0",
+  "description": "2003 High School Portfolio =======================",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server . /welcome.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemunsie/2003-High-School-Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikemunsie/2003-High-School-Portfolio/issues"
+  },
+  "homepage": "https://github.com/mikemunsie/2003-High-School-Portfolio#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
